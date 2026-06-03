@@ -1,108 +1,197 @@
-﻿# LEBL Airport Management
+# Managing Airports SA™
 
-Proyecto de Informatica 1 para gestionar aeropuertos, vuelos de llegada/salida y asignacion de gates en el aeropuerto de Barcelona LEBL.
+## Airport Manager — Sistema Inteligente de Gestión Aeroportuaria
 
-## Equipo
+**Managing Airports SA™** presenta **Airport Manager**, una solución digital diseñada para facilitar la gestión operativa de aeropuertos mediante una interfaz visual, intuitiva y robusta.
 
-Autores/equipo: TODO completar con los nombres del grupo.
+En un entorno aeroportuario, cada decisión cuenta. Una puerta mal asignada, una salida no prevista o una mala interpretación del tráfico puede afectar a toda la operación. Por eso, **Airport Manager** nace con un objetivo claro: **convertir datos complejos en decisiones rápidas, fiables y visuales**.
 
-## Como ejecutar
+Airport Manager permite centralizar en una única plataforma la gestión de aeropuertos, vuelos, rutas, terminales, aerolíneas y puertas de embarque. La herramienta trabaja con información estructurada en ficheros de texto y la transforma en gráficos, mapas y simulaciones operativas fáciles de interpretar.
 
-1. Abrir la carpeta del proyecto en PyCharm o en una terminal.
-2. Ejecutar:
+---
 
-```bash
-python interface.py
-```
+## ¿Qué es Airport Manager?
 
-Tambien se pueden probar los modulos por separado:
+**Airport Manager** es una interfaz de escritorio orientada a la gestión y simulación operativa del aeropuerto de **Barcelona-El Prat (LEBL)**.
 
-```bash
-python airport.py
-python aircraft.py
-python LEBL.py
-```
+El sistema permite:
 
-## Archivos principales
+- Cargar y gestionar bases de datos de aeropuertos.
+- Clasificar aeropuertos y vuelos como Schengen o no Schengen.
+- Analizar llegadas por aerolínea y por tipo de vuelo.
+- Generar rutas de vuelo visuales mediante archivos KML.
+- Cargar la estructura interna del aeropuerto LEBL.
+- Gestionar terminales, áreas de embarque y puertas.
+- Asignar puertas según aerolínea, terminal y tipo de vuelo.
+- Simular la ocupación de puertas durante todo el día.
+- Gestionar salidas y liberar puertas cuando un avión despega.
+- Visualizar el estado de las puertas hora a hora mediante un slider interactivo.
 
-- `airport.py`: clase `Airport`, carga/guardado de aeropuertos, Schengen, graficos y KML.
-- `aircraft.py`: clase `Aircraft`, llegadas, salidas, merge de movimientos, night aircraft, plots y rutas.
-- `LEBL.py`: estructura de LEBL, terminales, boarding areas, gates y asignacion dinamica.
-- `utils.py`: validacion de horas, conversiones, lectura/escritura segura y helpers generales.
-- `interface.py`: interfaz grafica final con Tkinter y matplotlib incrustado.
-- `Airports.txt`, `Arrivals.txt`, `Departures.txt`, `Terminals.txt`, `T1_Airlines.txt`, `T2_Airlines.txt`: datos del proyecto.
+Airport Manager no es solo un visor de datos.  
+Es una **herramienta de apoyo a la toma de decisiones operativas**.
 
-## Funcionalidades por version
+---
 
-### Version 1
+## ¿Por qué Airport Manager?
 
-- Cargar aeropuertos desde fichero.
-- Anadir y eliminar aeropuertos.
-- Detectar aeropuertos Schengen.
-- Guardar aeropuertos Schengen.
-- Graficar y generar mapa KML de aeropuertos.
+La gestión aeroportuaria moderna necesita claridad, rapidez y fiabilidad.
 
-### Version 2
+Airport Manager se ha diseñado alrededor de tres pilares principales:
 
-- Cargar vuelos de llegada.
-- Guardar vuelos.
-- Graficos de llegadas, aerolineas y vuelos Schengen/no Schengen.
-- Generar rutas KML y detectar vuelos de larga distancia.
+### Robustez
 
-### Version 3
+El sistema está preparado para soportar errores habituales sin bloquearse. Detecta ficheros inexistentes, listas vacías, entradas incorrectas, puertas no disponibles y operaciones no válidas, informando al usuario mediante mensajes claros dentro de la interfaz.
 
-- Cargar estructura de terminales de LEBL.
-- Cargar aerolineas por terminal.
-- Crear boarding areas y gates.
-- Buscar terminal por aerolinea.
-- Asignar gates y consultar ocupacion.
+### Inteligencia operativa
 
-### Version 4
+La aplicación no trata los vuelos como datos aislados. Relaciona llegadas y salidas, detecta aviones que pernoctan en el aeropuerto, asigna puertas según restricciones reales y simula la evolución de la ocupación durante el día.
 
-- Cargar salidas con formato `AIRCRAFT DESTINATION DEPARTURE AIRLINE`.
-- Fusionar llegadas y salidas por aircraft id.
-- Controlar multiples movimientos del mismo avion durante el dia.
-- Detectar night aircraft: aviones sin llegada pero con salida.
-- Liberar gates cuando un avion sale.
-- Asignar gates por franja horaria.
-- Simular ocupacion de todo el dia.
-- Mostrar vuelos no asignados por hora.
+### Claridad visual
 
-## Extras implementados
+Airport Manager convierte datos en información visual. Mediante gráficos, mapas y planos interactivos de puertas, el usuario puede entender rápidamente la situación del aeropuerto y tomar mejores decisiones.
 
-- Dashboard visual de ocupacion diaria por terminal con aircraft no asignados.
-- Mapa visual de gates con puertas libres/ocupadas e id del aircraft cuando cabe.
-- Exportacion de informe resumen a `.txt`.
+---
 
-## Robustez
+## Áreas principales del sistema
 
-El programa evita crashear ante:
+### Gestión de aeropuertos
 
-- Ficheros inexistentes o vacios.
-- Lineas con formato incorrecto.
-- Horas invalidas.
-- Listas vacias.
-- Aerolineas no encontradas.
-- Terminal o estructura no cargada.
-- Falta de gates libres.
-- Botones pulsados antes de cargar datos.
+El módulo de gestión de aeropuertos permite cargar, añadir y eliminar aeropuertos del sistema. Cada aeropuerto queda identificado por su código ICAO y sus coordenadas geográficas.
 
-## Capturas
+El sistema también puede clasificar aeropuertos en función de si pertenecen o no al espacio Schengen, permitiendo diferenciar distintos tipos de operación aeroportuaria.
 
-TODO insertar capturas de la interfaz, dashboard y mapa de gates.
+---
 
-## Video
+### Análisis de llegadas
 
-TODO insertar link al video de presentacion.
+El módulo de llegadas carga los vuelos programados para aterrizar en LEBL.
 
-## Uso de IA
+Cada llegada incluye:
 
-Se ha usado asistencia de IA para revisar, refactorizar y robustecer el codigo, manteniendo una estructura y estilo adecuados para Informatica 1: clases simples, listas, ficheros de texto, matplotlib y tkinter.
+- Identificador del avión.
+- Aeropuerto de origen.
+- Hora de llegada.
+- Código de aerolínea.
 
-## Puntos a revisar antes de entregar
+Una vez cargados los datos, el sistema puede generar análisis visuales como:
 
-- Completar nombres de autores.
-- Confirmar que el `Departures.txt` definitivo coincide con el fichero de datos pedido por el profesor.
-- Probar manualmente la interfaz en el ordenador de entrega.
-- Anadir capturas y link del video.
-# Airport-Management-SA
+- Número de vuelos por aerolínea.
+- Comparativa entre llegadas Schengen y no Schengen.
+- Rutas de llegada hacia Barcelona-El Prat.
+
+Esto permite al operador comprender el flujo de tráfico entrante y detectar qué aerolíneas o regiones generan mayor carga operativa.
+
+---
+
+### Visualización de rutas de vuelo
+
+Airport Manager puede generar archivos KML para visualizar aeropuertos y rutas de vuelo en Google Earth.
+
+El sistema muestra:
+
+- Puntos de aeropuertos.
+- Rutas de llegada hacia LEBL.
+- Rutas Schengen y no Schengen diferenciadas por colores.
+
+Esto ofrece una visión geográfica de la red aeroportuaria y permite entender mejor la conectividad de Barcelona-El Prat.
+
+---
+
+### Gestión de puertas
+
+El módulo de gestión de puertas es el núcleo del sistema.
+
+Airport Manager carga la estructura de LEBL, incluyendo:
+
+- Terminales.
+- Áreas de embarque.
+- Puertas.
+- Zonas Schengen y no Schengen.
+- Aerolíneas asignadas a cada terminal.
+
+Gracias a esta estructura, el sistema puede asignar puertas de forma inteligente teniendo en cuenta:
+
+- La aerolínea del avión.
+- La terminal donde opera esa aerolínea.
+- El carácter Schengen o no Schengen del vuelo.
+- La disponibilidad real de puertas.
+
+El resultado es una simulación realista de asignación de puertas en un aeropuerto.
+
+---
+
+### Salidas y liberación de puertas
+
+Airport Manager también gestiona las salidas.
+
+Cuando un avión despega, su puerta queda liberada y vuelve a estar disponible para futuras llegadas. Esto hace que la simulación sea mucho más realista, ya que el aeropuerto no se trata como un sistema estático.
+
+La aplicación puede unir llegadas y salidas mediante el identificador del avión, entendiendo así el ciclo completo de movimiento de cada aeronave durante el día.
+
+---
+
+### Simulación diaria de ocupación
+
+El sistema simula el aeropuerto hora a hora.
+
+En cada franja horaria puede:
+
+- Asignar puertas a los aviones que llegan.
+- Liberar puertas de los aviones que salen.
+- Contar cuántas puertas están ocupadas.
+- Mostrar la evolución del uso de puertas durante el día.
+
+Esto ayuda a identificar horas críticas, posibles puntos de saturación y momentos de mayor presión sobre la infraestructura aeroportuaria.
+
+---
+
+### Panel interactivo V4
+
+La versión final incorpora un panel visual interactivo.
+
+Mediante un slider temporal, el usuario puede desplazarse por las 24 horas del día y ver el estado de las puertas del aeropuerto en cada momento.
+
+Las puertas libres se muestran en verde.  
+Las puertas ocupadas se muestran en rojo.
+
+Esto transforma la interfaz en un panel dinámico de control operativo.
+
+---
+
+## Experiencia de usuario
+
+Airport Manager ha sido diseñado con una interfaz profesional, clara y cómoda de utilizar.
+
+La aplicación incluye:
+
+- Diseño moderno con CustomTkinter.
+- Modo claro y modo oscuro.
+- Barra de notificaciones de estado.
+- Gráficos integrados con Matplotlib.
+- Plano visual interactivo del aeropuerto.
+- Música ambiental opcional.
+- Colores claros para acciones principales, acciones correctas y errores.
+
+El objetivo es que el sistema sea potente, pero también agradable y sencillo de usar.
+
+---
+
+## Visión
+
+Airport Manager se construye alrededor de una idea sencilla:
+
+> **Los datos aeroportuarios no solo deben almacenarse. Deben entenderse.**
+
+Managing Airports SA™ busca ofrecer una herramienta que ayude a pasar de datos sin procesar a control operativo.
+
+Combinando procesamiento de datos, análisis visual, mapas de rutas y simulación de puertas, Airport Manager ofrece una visión completa de la actividad aeroportuaria desde una sola interfaz.
+
+---
+
+## Managing Airports SA™
+
+**Managing Airports SA™** representa una forma moderna de entender la gestión aeroportuaria: eficiente, visual, fiable y preparada para retos operativos reales.
+
+Airport Manager es un paso hacia aeropuertos más inteligentes, donde cada vuelo, cada puerta y cada decisión pueden supervisarse con claridad.
+
+**Managing Airports SA™ — Control, visión y fiabilidad para aeropuertos preparados para despegar.**
