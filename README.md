@@ -8,6 +8,7 @@ En un entorno aeroportuario, cada decisión cuenta. Una puerta mal asignada, una
 
 Airport Manager permite centralizar en una única plataforma la gestión de aeropuertos, vuelos, rutas, terminales, aerolíneas y puertas de embarque. La herramienta trabaja con información estructurada en ficheros de texto y la transforma en gráficos, mapas y simulaciones operativas fáciles de interpretar.
 
+Disfruta: https://drive.google.com/file/d/1XULBw7zhhhIZY4gg5bdfsGJ0t8e1pAsK/view?usp=sharing
 ---
 
 ## ¿Qué es Airport Manager?
